@@ -44,5 +44,7 @@ Class that contains well data
 \item{\code{loess}}{- object returned by running loess on the normalized well data}
 
 \item{\code{nls}}{- object returned by running nls on the normalized well data}
+
+\item{\code{auc}}{- The area under the curve.}
 }}
 

@@ -34,7 +34,7 @@ class Assay
   extend ActiveModel::Naming
   attr_accessor :input_file, :blank_value, :blank_value_input, :start_index, :remove_points, :remove_jumps, :plate_type,
   :plate_dimensions_row, :plate_dimensions_column, :timestamp_format, :growth_threshold, :layout_file,:filename,:content_type, :model, :loess_input, :console_out, :specg_min,
-  :specg_max, :totg_min, :totg_max, :totg_OD_min, :totg_OD_max, :lagT_min, :lagT_max,:transformation, :transformation_input
+  :specg_max, :totg_min, :totg_max, :totg_OD_min, :totg_OD_max, :lagT_min, :lagT_max,:transformation, :transformation_input, :range_a, :range_b
   
 
   # (1) Validation of input data file
@@ -187,6 +187,12 @@ class Assay
     if (self.lagT_min != '' && self.lagT_max != '')
       self.lagT_max = Float(self.lagT_max)
       self.lagT_min = Float(self.lagT_min)
+    end
+
+    # (8) Integration bound
+    if (self.range_a != '' && self.range_a != '')
+      self.range_a = Float(self.range_a)
+      self.range_b = Float(self.range_b)
     end
 
 
@@ -380,12 +386,21 @@ class Assay
     else
       R.eval 'lagRange <- NA'
     end
-    
+
+    # Integration bound.
+    if (self.range_a != '' && self.range_b != '')
+      R.assign 'range_a', self.range_a
+      R.assign 'range_b', self.range_b
+      R.eval "sranges <- c(range_a, range_b)"
+    else
+      R.eval "sranges <- NA"
+    end
+
     # This block evaluates the files (csv or xlsx, single.plate or multiple.plate)
     R.eval ('R_file_return_value <- gcat.analysis.main(file, single.plate, layout.file, out.dir=out.dir, graphic.dir = out.dir, add.constant, blank.value, 
                                     start.index, growth.cutoff, use.linear.param=use.linear.param, use.loess=use.loess, smooth.param=smooth.param, 
-				    lagRange = lagRange, totalRange = totalRange, totalODRange = totalODRange, specRange = specRange, 
-				    points.to.remove = points.to.remove, remove.jumps, time.input, plate.nrow = 8, 
+				                            lagRange = lagRange, totalRange = totalRange, totalODRange = totalODRange, specRange = specRange, 
+				                            points.to.remove = points.to.remove, remove.jumps, time.input, plate.nrow = 8, sranges = sranges,
                                     plate.ncol = 12, input.skip.lines = 0, multi.column.headers = c("Plate.ID", "Well", "OD", "Time"), single.column.headers = c("","A1"), 
                                     layout.sheet.headers = c("Strain", "Media Definition"), silent = T, verbose = F, return.fit = F, overview.jpgs = T)')
    

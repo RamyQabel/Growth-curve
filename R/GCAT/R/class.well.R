@@ -53,6 +53,7 @@ setOldClass("loess")
 #'  @slot    rss - residual sum of squares
 #'  @slot    loess - object returned by running loess on the normalized well data
 #'  @slot    nls - object returned by running nls on the normalized well data
+#'  @slot    auc - The area under the curve. 
 #'  
 #'  @export
 setClass("well", representation(position = "character",
@@ -71,7 +72,8 @@ setClass("well", representation(position = "character",
             inflection.time = "numeric",
             rss = "numeric",
             loess = "loess",
-            nls = "nls"))
+            nls = "nls",
+            auc = "character"))
 
 #' Accessors for the well class
 #' 
@@ -304,13 +306,14 @@ setMethod("show", "well",
 #' @param  show.calc draw lines that illustrate growth curve parameters
 #' @param  draw.guess initial guess model.  Drawn if specified
 #' @param  well.number the number of the well in an array of wells
+#' @param  sranges The boundaries to calculate the AUC.
 #' @param  ... additional arguments passed to the generic plot function
 #' 
 #' @export
 setMethod("plot",
           signature(x = "well", y="missing"),
           function (x, y, constant.added = 1.0, xlim = NULL, ylim = NULL,
-                    well.number = NULL, scale = 1, number.points = T, draw.symbols = F, show.text = T, show.calc = T, draw.guess = NULL, ...) 
+                    well.number = NULL, scale = 1, number.points = T, draw.symbols = F, show.text = T, show.calc = T, draw.guess = NULL, sranges = NA, ...) 
           {
             # Determine the boundaries for the axes (if user did not specify them)
             if(is.null(ylim)){
@@ -347,7 +350,7 @@ setMethod("plot",
             
             # Show calculated parameters if specified. 
             if (show.calc)
-              draw.calc.par(x, scale = scale * 0.5, constant.added = constant.added)
+              draw.calc.par(x, scale = scale * 0.5, constant.added = constant.added, sranges = sranges)
             
             # Draw initial guess if a model is specified. 
             if (class(draw.guess) == "model"){
