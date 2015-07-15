@@ -110,6 +110,7 @@ global.version.number = packageDescription(pkg="GCAT")$Version
 #' @param totalRange The heatmap specific range for the achieved growth on log scale.
 #' @param totalODRange The heatmap specific range for the achieved growth on linear (OD) scale.
 #' @param specRange The heatmap specific range for spec growth rate.
+#' @param sranges The 2 boundaries for calculating the area under the curve.
 #' 
 #' @return Depending on return.fit setting, an array of fitted well objects or a list of output files
 #' 
@@ -120,7 +121,7 @@ gcat.analysis.main = function(file.list, single.plate, layout.file = NULL,
   use.linear.param = F, use.loess = F, smooth.param=0.1,
   lagRange = NA, totalRange = NA, totalODRange = NA, specRange = NA,
   points.to.remove = 0, remove.jumps = F, time.input = NA,
-  plate.nrow = 8, plate.ncol = 12, input.skip.lines = 0,
+  plate.nrow = 8, plate.ncol = 12, sranges = NA, input.skip.lines = 0,
   multi.column.headers = c("Plate.ID", "Well", "OD", "Time"), single.column.headers = c("","A1"), 
   layout.sheet.headers = c("Strain", "Media Definition"),
   silent = T, verbose = F, return.fit = F, overview.jpgs = T){
@@ -152,6 +153,16 @@ gcat.analysis.main = function(file.list, single.plate, layout.file = NULL,
     }
   }
   
+  if (!identical(sranges, NA)) {
+    sranges.string = paste(sranges, collapse = "-")
+    if (length(sranges) != 2) 
+      exception("", paste("Should have 2 values for the bounds of integration. Bad range:", sranges.string))
+    if (sranges[2] < sranges[1])
+      exception("", paste("Bad range. The first range cannot be greater than the second:", sranges.string))
+    if (sranges[1] < 0 | sranges[2] < 0)
+      exception("", paste("Bad range. Either one of the range is negative:", sranges.string))
+  }
+  
     # MB: Now add.constant will always be 0.
     # No need to check.
     #if (add.constant < 0)
@@ -179,7 +190,7 @@ gcat.analysis.main = function(file.list, single.plate, layout.file = NULL,
     	    use.linear.param=use.linear.param, use.loess=use.loess, smooth.param=smooth.param,
           plate.nrow = plate.nrow, plate.ncol = plate.ncol, multi.column.headers = multi.column.headers, 
           single.column.headers = single.column.headers, layout.sheet.headers = layout.sheet.headers,
-          input.skip.lines = input.skip.lines, silent = silent, verbose = verbose), silent = T)
+          input.skip.lines = input.skip.lines, silent = silent, verbose = verbose, sranges = sranges), silent = T)
       
       # Return error message if the function fails.
       if(class(fitted.well.array) == "try-error")
@@ -197,7 +208,7 @@ gcat.analysis.main = function(file.list, single.plate, layout.file = NULL,
           growth.cutoff = growth.cutoff, add.constant = add.constant, blank.value = blank.value, start.index = start.index, 
           points.to.remove = points.to.remove, remove.jumps = remove.jumps, 
           lagRange = lagRange, specRange = specRange, totalRange = totalRange, totalODRange = totalODRange,
-          out.dir = out.dir, graphic.dir = graphic.dir, overview.jpgs=overview.jpgs,
+          sranges = sranges, out.dir = out.dir, graphic.dir = graphic.dir, overview.jpgs=overview.jpgs,
           use.linear.param=use.linear.param, use.loess=use.loess, plate.ncol = plate.ncol, plate.nrow = plate.nrow,
           silent = silent, main.envir = main.envir), silent = T)
     
@@ -261,6 +272,7 @@ gcat.analysis.main = function(file.list, single.plate, layout.file = NULL,
 #' @param layout.sheet.headers The headers of the layout file.
 #' @param growth.model What growth model should be used?
 #' @param backup.growth.model If the main growth model fails, the back up model will be used.
+#' @param sranges The 2 boundaries for calculating the area under the curve.
 #' @param silent Surpress all messages.
 #' @param verbose Display all messages when analyzing each well.
 #' 
@@ -270,7 +282,7 @@ gcat.fit.main = function(file.name, input.data = NULL, load.type = "csv", layout
   normalize.method = "default", add.constant = 1, use.log = T, points.to.remove = 0,
   use.linear.param=F, use.loess=F, smooth.param=0.1,
   fall.cutoff = -0.0025, growth.cutoff = 0.05, remove.jumps = F,  
-  plate.nrow = 8, plate.ncol = 12, input.skip.lines = 0,
+  plate.nrow = 8, plate.ncol = 12, sranges = NA, input.skip.lines = 0,
   multi.column.headers = c("Plate.ID", "Well", "OD", "Time"), single.column.headers = c("","A1"), 
   layout.sheet.headers = c("Strain", "Media Definition"),
   growth.model = NA, backup.growth.model = NA, 
@@ -452,7 +464,7 @@ gcat.fit.main = function(file.name, input.data = NULL, load.type = "csv", layout
       # Return an error if there is a problem with model fitting
       if (class(well.array) == "try-error")
       	stop("Error in <fit.model>: ", well.array)
-        
+  well.array = try(AUC_well(well.array, sranges[1], sranges[2], silent = silent))
   if(!silent) cat("\ndone!\n")     
   return(well.array)     
   }    
@@ -495,11 +507,12 @@ gcat.fit.main = function(file.name, input.data = NULL, load.type = "csv", layout
 #' @param totalODRange The heatmap specific range for the achieved growth on linear (OD) scale.
 #' @param specRange The heatmap specific range for spec growth rate.
 #' @param main.envir starting environment of gcat.analysis.main(), captured as a list, printed out for debugging
+#' @param sranges The 2 boundaries for calculating the area under the curve.
 #' 
 #' @return A list of output files if success.
 gcat.output.main = function(fitted.well.array, out.prefix = "", source.file.list, upload.timestamp = NULL,   
   add.constant, blank.value, start.index, growth.cutoff, points.to.remove, remove.jumps, 
-  out.dir = getwd(), graphic.dir = paste(out.dir,"/pics",sep = ""), overview.jpgs = T,
+  out.dir = getwd(), graphic.dir = paste(out.dir,"/pics",sep = ""), overview.jpgs = T, sranges = NA,
   use.linear.param=F, use.loess=F, lagRange = NA, totalRange = NA, totalODRange = NA, specRange = NA,
   plate.nrow = 8, plate.ncol = 12, unlog = F, silent = T, main.envir){     
 
@@ -571,7 +584,7 @@ gcat.output.main = function(fitted.well.array, out.prefix = "", source.file.list
   
 	graphic.files = try(pdf.by.plate(fitted.well.array, out.prefix=out.prefix, upload.timestamp = upload.timestamp, 
     unlog=unlog,constant.added=add.constant,overview.jpgs=overview.jpgs, lagRange = lagRange, specRange = specRange, totalRange = totalRange,
-    totalODRange = totalODRange, plate.ncol = plate.ncol, plate.nrow = plate.nrow),silent=silent)
+    totalODRange = totalODRange, sranges = sranges, plate.ncol = plate.ncol, plate.nrow = plate.nrow),silent=silent)
   
   if (class(graphic.files) == "try-error")
 		stop("Error in <pdf.by.plate>: ", graphic.files)

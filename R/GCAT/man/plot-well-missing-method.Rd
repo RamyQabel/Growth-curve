@@ -8,7 +8,7 @@
 \S4method{plot}{well,missing}(x, y, constant.added = 1, xlim = NULL,
   ylim = NULL, well.number = NULL, scale = 1, number.points = T,
   draw.symbols = F, show.text = T, show.calc = T, draw.guess = NULL,
-  ...)
+  sranges = NA, ...)
 }
 \arguments{
 \item{x}{object of class well}
@@ -34,6 +34,8 @@
 \item{show.calc}{draw lines that illustrate growth curve parameters}
 
 \item{draw.guess}{initial guess model.  Drawn if specified}
+
+\item{sranges}{The boundaries to calculate the AUC.}
 
 \item{...}{additional arguments passed to the generic plot function}
 }

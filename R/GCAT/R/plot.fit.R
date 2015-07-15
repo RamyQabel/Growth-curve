@@ -140,7 +140,7 @@ draw.text = function(input.well, scale = 0.5, xlim = 0, ylim = 0,...){
   #   color = green if empty, blue if inoculated, red if inoculated but has no growth or empty but has growth. 
   
  	col2 = "blue" 
-	text2 = paste(input.well@fit.info, input.well@model.name, input.well@add.info, "\n", parameter.text(input.well))
+	text2 = paste(input.well@fit.info, input.well@model.name, input.well@add.info, "\n", parameter.text(input.well), "\n", "AUC: ", input.well@auc)
 
 	if (length(input.well@fit.par) == 0) # no fit
 		col2 = "red"
@@ -196,7 +196,7 @@ draw.text = function(input.well, scale = 0.5, xlim = 0, ylim = 0,...){
 #  @details	
 # \strong{show.num} - should curve parameters be labeled? 
 #		
-draw.calc.par = function(input.well, scale = 0.5, unlog = F, constant.added, show.num = T){
+draw.calc.par = function(input.well, scale = 0.5, unlog = F, constant.added, show.num = T, sranges = NA){
 
   # Don't do anything if well was not fit. 
 	if (is.null(well.eval(input.well)))
@@ -221,8 +221,16 @@ draw.calc.par = function(input.well, scale = 0.5, unlog = F, constant.added, sho
 	
 	# ---- Specific growth rate ---- #
 	lines(c(lag.x, inflection.time), c(lag.y, max.y), lty = 2, col = "red")
-
-
+  
+  # MB: Drawing boundaries for the AUC.
+  if (!is.na(sranges))
+  {
+    #abline(v = sranges[1], lty = 1)
+    segments(sranges[1], baseline, sranges[1], well.eval(input.well, sranges[1]), lty = 1)
+    segments(sranges[2], baseline, sranges[2], well.eval(input.well, sranges[2]), lty = 1)
+    #abline(v = sranges[2], lty = 1)
+  }
+  
   # Blue dotted line at time of maximum growth, with text label for specific growth rate. 
 	abline(v = inflection.time, lty = 2, lw = (scale^2)*2, col = "blue")
   if(show.num) text(inflection.time, max.y, round(max.slope,3), col = "blue", cex = 1.5*scale, pos = 2)
@@ -485,7 +493,7 @@ plate.overview = function(fitted.well.array, scale = 1, plate.ncol = 12, plate.n
 view.fit = function(fitted.data, indices = 1:length(fitted.data), 
       unlog = F, constant.added, xlim = NULL, ylim = NULL, display.legend = T, 
 		  show.text = T, show.calc = T, draw.guess = NULL, draw.symbols = F, number.points = T, 
-			user.advance = T, show.residuals = F, scale = 1,...){
+			user.advance = T, show.residuals = F, scale = 1, sranges = sranges,...){
 
   if(!is.array(fitted.data))
     fitted.data = list(fitted.data)
@@ -530,7 +538,7 @@ view.fit = function(fitted.data, indices = 1:length(fitted.data),
       # plot the well
       fitted.well = fitted.data[[well.number]]
       plot(x=fitted.well, constant.added = constant.added, xlim = xlim, ylim = ylim,
-           unlog = unlog, well.number = well.number, scale = scale, number.points = T, draw.symbols = F, show.text = T, show.calc = T, draw.guess = NULL, ...)
+           unlog = unlog, well.number = well.number, scale = scale, number.points = T, draw.symbols = F, show.text = T, show.calc = T, draw.guess = NULL, sranges = sranges, ...)
       
       if(user.advance)
         cat("\n[", well.number, "] ", plate.name(fitted.well), " ", well.name(fitted.well), ".", sep = "")
@@ -616,7 +624,7 @@ well.fit.legend = function(xlim, ylim, scale = 1, constant.added){
 #  Generate pdf files
 pdf.by.plate = function(fitted.data, out.prefix = "", upload.timestamp = NULL, 
   out.dir = getwd(), unlog = F, constant.added, silent = T, overview.jpgs = T, plate.ncol = 12, plate.nrow = 8,
-  lagRange = NA, specRange = NA, totalRange = NA, totalODRange = NA, ...){
+  lagRange = NA, specRange = NA, totalRange = NA, totalODRange = NA, sranges = sranges,...){
  
   # Prepare timestamp for addition to output file names. 
   filename.timestamp = strftime(upload.timestamp, format="_%Y-%m-%d_%H.%M.%S")
@@ -678,7 +686,7 @@ pdf.by.plate = function(fitted.data, out.prefix = "", upload.timestamp = NULL,
     pdf(pdf.name, title = paste("R Graphics output for plate", plate.ID))
     
     # Call <view.fit> to draw each well on the plate to the pdf. 
-    view.fit.out = try(view.fit(fitted.data, indices = plate.indices, unlog=unlog, constant.added=constant.added, user.advance=F,...),silent=T) 
+    view.fit.out = try(view.fit(fitted.data, indices = plate.indices, unlog=unlog, constant.added=constant.added, user.advance=F, sranges = sranges,...),silent=T) 
    
     if(class(view.fit.out) == "try-error")
       stop("Error in <view.fit>: ", view.fit.out)

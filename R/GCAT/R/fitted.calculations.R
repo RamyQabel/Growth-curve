@@ -340,3 +340,21 @@ inflection.time = function(well){
   infl.index = which.max(dydt)
   t[infl.index]
 }
+
+# Calculate the area under the curve with the specified time range.
+AUC_well <- function(well.array, a = 0, b = 1, silent = TRUE) {
+  for (i in 1:length(well.array)) {
+    f <- function(x) {well.eval(well.array[[i]], x)}
+    auc.string = try(integrate(f, a, b), silent = silent)
+    if (class(auc.string) == "try-error")
+    {
+      well.array[[i]]@auc = ""
+      if (!silent) print(paste("Cannot calculate the area at well: ", i))
+    }
+    else {
+      well.array[[i]]@auc = paste(abs(round(auc.string$value, digits = 3)), "with boundaries: (", a, ",", b, ")")
+      
+    }
+  }
+  return (well.array)
+}

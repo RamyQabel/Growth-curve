@@ -154,6 +154,15 @@
       <%= f.text_field(:lagT_max, :size => '5') %>
     </div>
   </li>
+  <li>
+    <h3><span data-tooltip="Select value ranges to calculate the area under the curve">Integration ranges</span></h3>
+    <div class="field">
+      <%= f.label "Enter the time range" %><br />
+      <%= f.text_field :range_a, :size => '5' %>
+      <%= f.label "-" %>
+      <%= f.text_field :range_b, :size => '5' %>
+    </div>
+  </li>
   <div class="actions" style="margin-top:30px; clear:both;">
     <%= f.submit %>
   </div>

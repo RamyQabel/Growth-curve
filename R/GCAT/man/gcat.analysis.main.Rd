@@ -10,7 +10,7 @@ gcat.analysis.main(file.list, single.plate, layout.file = NULL,
   use.linear.param = F, use.loess = F, smooth.param = 0.1,
   lagRange = NA, totalRange = NA, totalODRange = NA, specRange = NA,
   points.to.remove = 0, remove.jumps = F, time.input = NA,
-  plate.nrow = 8, plate.ncol = 12, input.skip.lines = 0,
+  plate.nrow = 8, plate.ncol = 12, sranges = NA, input.skip.lines = 0,
   multi.column.headers = c("Plate.ID", "Well", "OD", "Time"),
   single.column.headers = c("", "A1"), layout.sheet.headers = c("Strain",
   "Media Definition"), silent = T, verbose = F, return.fit = F,
@@ -58,6 +58,8 @@ gcat.analysis.main(file.list, single.plate, layout.file = NULL,
 \item{plate.nrow}{The number of rows in a plate.}
 
 \item{plate.ncol}{The number of columns in a plate.}
+
+\item{sranges}{The 2 boundaries for calculating the area under the curve.}
 
 \item{input.skip.lines}{If specified, this number of lines shall be skipped from the top when reading the input file with read.csv}
 

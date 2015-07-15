@@ -10,7 +10,7 @@ gcat.fit.main(file.name, input.data = NULL, load.type = "csv",
   add.constant = 1, use.log = T, points.to.remove = 0,
   use.linear.param = F, use.loess = F, smooth.param = 0.1,
   fall.cutoff = -0.0025, growth.cutoff = 0.05, remove.jumps = F,
-  plate.nrow = 8, plate.ncol = 12, input.skip.lines = 0,
+  plate.nrow = 8, plate.ncol = 12, sranges = NA, input.skip.lines = 0,
   multi.column.headers = c("Plate.ID", "Well", "OD", "Time"),
   single.column.headers = c("", "A1"), layout.sheet.headers = c("Strain",
   "Media Definition"), growth.model = NA, backup.growth.model = NA,
@@ -62,6 +62,8 @@ By default(0) none are marked for removal.}
 \item{plate.nrow}{The number of rows in the input files.}
 
 \item{plate.ncol}{The number of columns in the input files.}
+
+\item{sranges}{The 2 boundaries for calculating the area under the curve.}
 
 \item{input.skip.lines}{If specified, this number of lines shall be skipped from the top when reading the input file with read.csv}
 

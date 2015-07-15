@@ -8,9 +8,9 @@ gcat.output.main(fitted.well.array, out.prefix = "", source.file.list,
   upload.timestamp = NULL, add.constant, blank.value, start.index,
   growth.cutoff, points.to.remove, remove.jumps, out.dir = getwd(),
   graphic.dir = paste(out.dir, "/pics", sep = ""), overview.jpgs = T,
-  use.linear.param = F, use.loess = F, lagRange = NA, totalRange = NA,
-  totalODRange = NA, specRange = NA, plate.nrow = 8, plate.ncol = 12,
-  unlog = F, silent = T, main.envir)
+  sranges = NA, use.linear.param = F, use.loess = F, lagRange = NA,
+  totalRange = NA, totalODRange = NA, specRange = NA, plate.nrow = 8,
+  plate.ncol = 12, unlog = F, silent = T, main.envir)
 }
 \arguments{
 \item{fitted.well.array}{A list of fitted well objects.}
@@ -41,6 +41,8 @@ If NULL, defaults to the value of the first OD measurement of each well.}
 
 \item{overview.jpgs}{should jpgs be generated for each plate with the overview graphic?
 This is for backwards compatibility with the old web server.}
+
+\item{sranges}{The 2 boundaries for calculating the area under the curve.}
 
 \item{use.linear.param}{linear parameter is used or not?}
 
