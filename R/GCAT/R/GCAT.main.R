@@ -22,22 +22,22 @@
 #               Package-level documentation and imports                #
 #                                                                      #
 ########################################################################
-#'  GCAT: Growth Curve Analysis Tool
-#'  
-#'  Mathematical modeling and parameter estimation of high volume microbial growth data.
-#'  
-#'  @details
-#'  GCAT input is in .csv format.  GCAT analysis is accessed using \code{\link{gcat.analysis.main}}
-#'  
-#'  GCAT utilizes the \code{\link[stats]{nls}} function in the R stats package to fit logistic, Gompertz and Richards models to growth curve 
-#'  data. Best model is selected automatically.  Alternatively, the user may choose LOESS local regression fits, implemented using
-#'  \code{\link[stats]{loess}} function in the R stats package  
-#'  
-#'  Internally, the data are stored in an array of \linkS4class{well} objects
-#'  
-#'  @import pheatmap gplots methods
-#'  @docType package
-#'  @name GCAT
+#' GCAT: Growth Curve Analysis Tool
+#' 
+#' Mathematical modeling and parameter estimation of high volume microbial growth data.
+#' 
+#' @details
+#' GCAT input is in .csv format.  GCAT analysis is accessed using \code{\link{gcat.analysis.main}}
+#' 
+#' GCAT utilizes the \code{\link[stats]{nls}} function in the R stats package to fit logistic, Gompertz and Richards models to growth curve 
+#' data. Best model is selected automatically.  Alternatively, the user may choose LOESS local regression fits, implemented using
+#' \code{\link[stats]{loess}} function in the R stats package  
+#' 
+#' Internally, the data are stored in an array of \linkS4class{well} objects
+#' 
+#' @import pheatmap gplots methods
+#' @docType package
+#' @name GCAT
 NULL
 
 # Initialization
