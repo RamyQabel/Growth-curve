@@ -237,24 +237,24 @@ projected.growth.OD = function(fitted.well,constant.added,digits=Inf) {
   round(value,digits)
 }
 
-#'   Calculate achieved growth: max.log.OD minus the inoculated log.OD
-#'   
-#'   @param fitted.well object of class \linkS4class{well} with fitted model info
-#'   @param digits number of significant digits to output
-#'   
-#'   @export
+#' Calculate achieved growth: max.log.OD minus the inoculated log.OD
+#' 
+#' @param fitted.well object of class \linkS4class{well} with fitted model info
+#' @param digits number of significant digits to output
+#' 
+#' @export
 achieved.growth = function(fitted.well,digits=Inf) {
   max.log.OD(fitted.well,digits) - inoc.log.OD(fitted.well,digits)
 }
 
-#'   Calculate achieved growth on OD scale: max OD minus the inoculated OD
-#'   
-#'   @param fitted.well object of class \linkS4class{well} with fitted model info
-#'   @param constant.added the constant added during OD transform, 
-#'   as in \emph{log.OD = log(OD - blank + const)}
-#'   @param digits number of significant digits to output
-#'   
-#'   @export
+#' Calculate achieved growth on OD scale: max OD minus the inoculated OD
+#' 
+#' @param fitted.well object of class \linkS4class{well} with fitted model info
+#' @param constant.added the constant added during OD transform, 
+#' as in \emph{log.OD = log(OD - blank + const)}
+#' @param digits number of significant digits to output
+#' 
+#' @export
 achieved.growth.OD = function(fitted.well,constant.added,digits=Inf) {
   value = unlog(max.log.OD(fitted.well),constant.added) - unlog(inoc.log.OD(fitted.well),constant.added)
   round(value,digits)
@@ -355,20 +355,20 @@ inflection.time = function(well){
 
 #'  Compute Area Under The Curve (AUC)
 #'  
-#'   @param fitted.well object of class \linkS4class{well} with fitted model info
-#'   @param start starting time for AUC calculation
-#'   @param end end time for AUC calculation
-#'   @param digits number of significant digits to output
-#'   @param unlog logic, if TRUE, compute AUC on linear OD scale
-#'   @param constant.added constant added in the \emph{log.OD = log(OD - blank + const)} transformation
-#'   
-#'   @return 
-#'   Returns numeric AUC value computed using the well's \emph{nls} or \emph{loess} model.  
-#'   Returns NA if neither \emph{nls} nor \emph{loess} model is defined for the well.
-#'   
-#'   @seealso \linkS4class{well}
-#'   
-#'   @export
+#' @param fitted.well object of class \linkS4class{well} with fitted model info
+#' @param start starting time for AUC calculation
+#' @param end end time for AUC calculation
+#' @param digits number of significant digits to output
+#' @param unlog logic, if TRUE, compute AUC on linear OD scale
+#' @param constant.added constant added in the \emph{log.OD = log(OD - blank + const)} transformation
+#' 
+#' @return 
+#' Returns numeric AUC value computed using the well's \emph{nls} or \emph{loess} model.  
+#' Returns NA if neither \emph{nls} nor \emph{loess} model is defined for the well.
+#' 
+#' @seealso \linkS4class{well}
+#' 
+#' @export
 auc = function(fitted.well, start=NULL, end=NULL, digits=3, unlog=FALSE, constant.added=0) {
   #  Check inputs
   stopifnot(class(fitted.well)=="well")

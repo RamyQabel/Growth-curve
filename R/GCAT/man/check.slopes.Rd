@@ -8,26 +8,35 @@ check.slopes(input.well, check.start = 22, fall.cutoff = -0.0025,
   remove.jumps = F, jump.multipliers = -c(15, 500, 10), tank.cutoff = 1,
   tank.limit = 6, silent = T, draw = T)
 }
+\arguments{
+\item{input.well}{object of class \code{well} to check the slopes for}
+
+\item{check.start}{which timepoint should checking for jumps and tanking start at? this is included because early timepoints can be unstable.}
+
+\item{fall.cutoff}{what downward slope should constitute a fall in OD?}
+
+\item{remove.jumps}{should the program remove OD jumps? default F (just report them) - 
+should be set to T if data contains distinct jumps in OD that need to be eliminated 
+otherwise, this might be too stringent and will result in loss of data.}
+
+\item{jump.multipliers}{multipliers of fall.cutoff that determine whether a curve jumps up or down (see methods 1 and 2, below)}
+
+\item{tank.cutoff}{what proportion of the maximum OD can the curve go below until it is considered tanking?}
+
+\item{tank.limit}{how many timepoints in a row can have falling slopes until the curve is marked as tanking?}
+
+\item{silent}{output to R console?}
+
+\item{draw}{plot growth curve with curve checking details?}
+}
 \description{
 Use slope estimates to check growth curves for tanking and OD jumps #
 }
 \details{
 Uses the functions <data.from> and <well.name> (see well.class.R) 
-  
- Fills the "curve.par" slot in the well with the starting index of tanking (NA if none is found)
  
- Changed default values to parameters to account for settling
+Fills the "curve.par" slot in the well with the starting index of tanking (NA if none is found)
 
- @param input.well object of class \code{well} to check the slopes for 
- @param remove.jumps should the program remove OD jumps? default F (just report them) - 
-                  should be set to T if data contains distinct jumps in OD that need to be eliminated 
-                  otherwise, this might be too stringent and will result in loss of data.  
- @param check.start which timepoint should checking for jumps and tanking start at? this is included because early timepoints can be unstable.
- @param fall.cutoff what downward slope should constitute a fall in OD? 
- @param jump.multipliers multipliers of fall.cutoff that determine whether a curve jumps up or down (see methods 1 and 2, below)
- @param tank.limit how many timepoints in a row can have falling slopes until the curve is marked as tanking?
- @param tank.cutoff what proportion of the maximum OD can the curve go below until it is considered tanking?
- @param silent output to R console?
- @param draw plot growth curve with curve checking details?
+Changed default values to parameters to account for settling
 }
 

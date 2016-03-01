@@ -3,15 +3,14 @@
 \docType{methods}
 \name{length,well-method}
 \alias{length,well-method}
-\title{Get the number of data points in a well
- 
- @param x object of class \code{well}}
+\title{Get the number of data points in a well}
 \usage{
 \S4method{length}{well}(x)
 }
+\arguments{
+\item{x}{object of class \code{well}}
+}
 \description{
 Get the number of data points in a well
- 
- @param x object of class \code{well}
 }
 

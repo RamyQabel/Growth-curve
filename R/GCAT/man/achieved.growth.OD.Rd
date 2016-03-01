@@ -2,25 +2,19 @@
 % Please edit documentation in R/fitted.calculations.R
 \name{achieved.growth.OD}
 \alias{achieved.growth.OD}
-\title{Calculate achieved growth on OD scale: max OD minus the inoculated OD
-  
-  @param fitted.well object of class \linkS4class{well} with fitted model info
-  @param constant.added the constant added during OD transform, 
-  as in \emph{log.OD = log(OD - blank + const)}
-  @param digits number of significant digits to output
-  
-  @export}
+\title{Calculate achieved growth on OD scale: max OD minus the inoculated OD}
 \usage{
 achieved.growth.OD(fitted.well, constant.added, digits = Inf)
 }
+\arguments{
+\item{fitted.well}{object of class \linkS4class{well} with fitted model info}
+
+\item{constant.added}{the constant added during OD transform, 
+as in \emph{log.OD = log(OD - blank + const)}}
+
+\item{digits}{number of significant digits to output}
+}
 \description{
 Calculate achieved growth on OD scale: max OD minus the inoculated OD
-  
-  @param fitted.well object of class \linkS4class{well} with fitted model info
-  @param constant.added the constant added during OD transform, 
-  as in \emph{log.OD = log(OD - blank + const)}
-  @param digits number of significant digits to output
-  
-  @export
 }
 

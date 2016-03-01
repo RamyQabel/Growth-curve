@@ -35,26 +35,26 @@ setOldClass("loess")
 
 #' Class that contains well data
 #' 
-#'  @slot position - 3-member vector containing identifying information for the well: row (letters), column (numbers) and plate ID. 
-#'  @slot    well.info - a list containing strain and media names if provided
-#'  @slot    screen.data - a data frame with Time and raw OD values. This is the only slot that is filled upon creation of a well object. 
-#'                 as different functions are run on the well the data frame gets filled with additional columns. 
-#'  @slot    start.index - integer index of the time point where growth curve starts, e.g. of the inoculation time point              
-#'  @slot    use.log - a single logical value denoting whether to return log-transformed values when data is requested from the well
-#'  @slot    norm - a value to subtract from all OD values before returning data. filled by <normalize.ODs> (see normalize.and.transform.R)
-#'  @slot    curve.par - a list of parameters that denote whether the well is empty, whether it contains ODs indicating a viable culture, whether it tanks at a certain timepoint.  
-#'  @slot    fit.par - will be a list containing the fitted model parameters
-#'  @slot      fit.std.err - will be a list containing the standard errors for the fitted model parameters
-#'  @slot      equation - will contain an expression for evaluating the successfully fitted model 
-#'  @slot      model.name - will contain the name of the successfully fit model
-#'  @slot    fit.info - a message with info about whether the fit was successful, failed, or skipped. 
-#'  @slot    add.info - a message with info about whether jumps in OD were detected or removed, or if ODs were detected below the blank OD.
-#'  @slot    inflection.time - the Time value at the point where the specific growth is located. no longer a formula param NWD
-#'  @slot    rss - residual sum of squares
-#'  @slot    loess - object returned by running loess on the normalized well data
-#'  @slot    nls - object returned by running nls on the normalized well data
-#'  
-#'  @export
+#' @slot position - 3-member vector containing identifying information for the well: row (letters), column (numbers) and plate ID. 
+#' @slot    well.info - a list containing strain and media names if provided
+#' @slot    screen.data - a data frame with Time and raw OD values. This is the only slot that is filled upon creation of a well object. 
+#'                as different functions are run on the well the data frame gets filled with additional columns. 
+#' @slot    start.index - integer index of the time point where growth curve starts, e.g. of the inoculation time point              
+#' @slot    use.log - a single logical value denoting whether to return log-transformed values when data is requested from the well
+#' @slot    norm - a value to subtract from all OD values before returning data. filled by <normalize.ODs> (see normalize.and.transform.R)
+#' @slot    curve.par - a list of parameters that denote whether the well is empty, whether it contains ODs indicating a viable culture, whether it tanks at a certain timepoint.  
+#' @slot    fit.par - will be a list containing the fitted model parameters
+#' @slot      fit.std.err - will be a list containing the standard errors for the fitted model parameters
+#' @slot      equation - will contain an expression for evaluating the successfully fitted model 
+#' @slot      model.name - will contain the name of the successfully fit model
+#' @slot    fit.info - a message with info about whether the fit was successful, failed, or skipped. 
+#' @slot    add.info - a message with info about whether jumps in OD were detected or removed, or if ODs were detected below the blank OD.
+#' @slot    inflection.time - the Time value at the point where the specific growth is located. no longer a formula param NWD
+#' @slot    rss - residual sum of squares
+#' @slot    loess - object returned by running loess on the normalized well data
+#' @slot    nls - object returned by running nls on the normalized well data
+#' 
+#' @export
 setClass("well", representation(position = "character",
 					  well.info = "list",
 					  screen.data = "data.frame", 
@@ -422,9 +422,9 @@ raw.data = function(well)
 contains.fit = function(well)
 	length(getFitPar(well)) > 0
 
-#'  Get the number of data points in a well
-#'  
-#'  @param x object of class \code{well}
+#' Get the number of data points in a well
+#' 
+#' @param x object of class \code{well}
 setMethod("length", signature(x = "well"), function(x) length(x@screen.data[,1]))
 
 #  Get well data

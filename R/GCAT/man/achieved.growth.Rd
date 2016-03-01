@@ -2,21 +2,16 @@
 % Please edit documentation in R/fitted.calculations.R
 \name{achieved.growth}
 \alias{achieved.growth}
-\title{Calculate achieved growth: max.log.OD minus the inoculated log.OD
-  
-  @param fitted.well object of class \linkS4class{well} with fitted model info
-  @param digits number of significant digits to output
-  
-  @export}
+\title{Calculate achieved growth: max.log.OD minus the inoculated log.OD}
 \usage{
 achieved.growth(fitted.well, digits = Inf)
 }
+\arguments{
+\item{fitted.well}{object of class \linkS4class{well} with fitted model info}
+
+\item{digits}{number of significant digits to output}
+}
 \description{
 Calculate achieved growth: max.log.OD minus the inoculated log.OD
-  
-  @param fitted.well object of class \linkS4class{well} with fitted model info
-  @param digits number of significant digits to output
-  
-  @export
 }
 

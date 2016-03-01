@@ -3,22 +3,7 @@
 \name{auc}
 \alias{auc}
 \alias{auc.OD}
-\title{Compute Area Under The Curve (AUC)
- 
-  @param fitted.well object of class \linkS4class{well} with fitted model info
-  @param start starting time for AUC calculation
-  @param end end time for AUC calculation
-  @param digits number of significant digits to output
-  @param unlog logic, if TRUE, compute AUC on linear OD scale
-  @param constant.added constant added in the \emph{log.OD = log(OD - blank + const)} transformation
-  
-  @return 
-  Returns numeric AUC value computed using the well's \emph{nls} or \emph{loess} model.  
-  Returns NA if neither \emph{nls} nor \emph{loess} model is defined for the well.
-  
-  @seealso \linkS4class{well}
-  
-  @export}
+\title{Compute Area Under The Curve (AUC)}
 \usage{
 auc(fitted.well, start = NULL, end = NULL, digits = 3, unlog = FALSE,
   constant.added = 0)
@@ -26,26 +11,31 @@ auc(fitted.well, start = NULL, end = NULL, digits = 3, unlog = FALSE,
 auc.OD(fitted.well, start = NULL, end = NULL, digits = 3,
   constant.added = 0)
 }
+\arguments{
+\item{fitted.well}{object of class \linkS4class{well} with fitted model info}
+
+\item{start}{starting time for AUC calculation}
+
+\item{end}{end time for AUC calculation}
+
+\item{digits}{number of significant digits to output}
+
+\item{unlog}{logic, if TRUE, compute AUC on linear OD scale}
+
+\item{constant.added}{constant added in the \emph{log.OD = log(OD - blank + const)} transformation}
+}
+\value{
+Returns numeric AUC value computed using the well's \emph{nls} or \emph{loess} model.  
+Returns NA if neither \emph{nls} nor \emph{loess} model is defined for the well.
+}
 \description{
 Compute Area Under The Curve (AUC)
- 
-  @param fitted.well object of class \linkS4class{well} with fitted model info
-  @param start starting time for AUC calculation
-  @param end end time for AUC calculation
-  @param digits number of significant digits to output
-  @param unlog logic, if TRUE, compute AUC on linear OD scale
-  @param constant.added constant added in the \emph{log.OD = log(OD - blank + const)} transformation
-  
-  @return 
-  Returns numeric AUC value computed using the well's \emph{nls} or \emph{loess} model.  
-  Returns NA if neither \emph{nls} nor \emph{loess} model is defined for the well.
-  
-  @seealso \linkS4class{well}
-  
-  @export
 }
 \section{Functions}{
 \itemize{
 \item \code{auc.OD}: Compute Area Under The Curve (AUC) on linear OD scale
 }}
+\seealso{
+\linkS4class{well}
+}
 
