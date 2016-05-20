@@ -8,14 +8,14 @@ Description: Imports high-throughput growth curve data from microtiter
     GCAT estimates important growth characteristics
     (specific growth rate, maximum growth capacity, and lag time)
     for each well in a read.
-Version: 6.3.0
+Version: 6.3.1
 Depends:
     pheatmap,
     gplots,
     methods
 Maintainer: Yury Bukhman <ybukhman@glbrc.wisc.edu>
 License: LGPL-3
-Date: 2016-02-26
+Date: 2016-05-20
 Author: Jason Shao, Nate DiPiazza, Minh Duc Bui, Yury V Bukhman, Aman Gupta
 Suggests:
     testthat
