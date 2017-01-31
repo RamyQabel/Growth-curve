@@ -1,0 +1,160 @@
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+      rinruby_pull(try(R_array_return_length))
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+      rinruby_pull(try(R_file_return_value))
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+library(GCAT)
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+out.dir <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+single.plate <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+time.input <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+load.type <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+file <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+add.constant <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+blank.value <- NULL
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+start.index <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+points.to.remove <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+growth.cutoff <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+layout.file <- NULL
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+remove.jumps <- F
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+use.loess <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+      rinruby_pull(try(as.integer(ifelse(inherits(try({eval(parse(text=paste(.RI NRUBY.PARSE.STRING,'<- 1')))}, silent=TRUE),'try-error'),1,0))))
+rm(.RINRUBY.PARSE.STRING)
+smooth.param <- rinruby_get_value()
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+specRange <- NA
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+totalRange <- NA
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+totalODRange <- NA
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+lagRange <- NA
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+auc.start <- NULL
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+auc.end <- NULL
+print('RINRUBY.EVAL.FLAG')
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+R_file_return_value <- gcat.analysis.main(
+                        file, single.plate, layout.file, out.dir=out.dir, graphi c.dir = out.dir, add.constant, blank.value, 
+                        start.index, growth.cutoff, use.loess=use.loess, smooth. param=smooth.param, 
+                        lagRange = lagRange, totalRange = totalRange, totalODRan ge = totalODRange, specRange = specRange, 
+                        points.to.remove = points.to.remove,remove.jumps,use.lin ear.param=F, time.input, plate.nrow = 8, 
+                        plate.ncol = 12, input.skip.lines = 0, multi.column.head ers = c("Plate.ID", "Well", "OD", "Time"), single.column.headers = c("","A1"), 
+                        layout.sheet.headers = c("Strain", "Media Definition"),  silent = T, verbose = F, return.fit = F, overview.jpgs = T,
+                        auc.start=auc.start, auc.end=auc.end
+            )
+print('RINRUBY.EVAL.FLAG')
+Error in if (fit.par$v < 0.5 && abs(fit.par$v) < 2 * summary(fit)$parameters["v",  : 
+  missing value where TRUE/FALSE needed
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+      rinruby_pull(try(R_file_return_value))
+.RINRUBY.PARSE.STRING <- rinruby_get_value()
+rinruby_parseable(.RINRUBY.PARSE.STRING)
+rm(.RINRUBY.PARSE.STRING)
+R_array_return_length <- length(R_file_return_value)
+print('RINRUBY.EVAL.FLAG')
+["Error in if (fit.par$v < 0.5 && abs(fit.par$v) < 2 * summary(fit)$parameters[\"v\",  ", " \n  missing value where TRUE/FALSE needed\n"]

@@ -1,0 +1,1 @@
+The issue appears to be that GCAT tries, unsuccessfully, to fit some of the wells where there is no real growth. This is fixed by setting Growth Threshold to a higher value, e.g. 0.1.
