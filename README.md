@@ -6,6 +6,8 @@
 
 # Getting started
 
+## Stand-alone R package
+
 If all you want is the R package, you can install it from file R/GCAT_N.N.N.tar.gz using R CMD INSTALL.  You can also install it in RStudio, using menu Tools ==> Install Packages ==> Package Archive File.
 
 ## Virtual machine
