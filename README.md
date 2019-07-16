@@ -10,8 +10,11 @@
 
 If all you want is the R package, you can install it from file R/GCAT_N.N.N.tar.gz using R CMD INSTALL.  You can also install it in RStudio, using menu Tools ==> Install Packages ==> Package Archive File.
 
-## Virtual machine
-A Ubuntu VirtualBox VM built by Fernando Marotta is available at https://drive.google.com/open?id=1ZSlJozj8cgZ66BR_6_V3G3OVeBdEomNN. Password for the user _dolo_ is _dolito_
+## Virtual machine (VM)
+A Ubuntu VirtualBox VM built by Fernando Marotta is available at https://drive.google.com/open?id=1ZSlJozj8cgZ66BR_6_V3G3OVeBdEomNN. Download and unzip the archive. Once VirtualBox is installed (see below), you should be able to launch the VM by double-clicking file *Ubuntu.vbox*. Password for the user _Dolo_ is _dolito_.
+
+### Install VirtualBox software
+This is necessary to run the VM. See https://www.virtualbox.org/wiki/Downloads. 
 
 ### Change system language
 This VM's language is Spanish. If you wish to change to another language, see instructions here: https://websiteforstudents.com/how-to-change-to-your-native-language-on-ubuntu-17-10/
