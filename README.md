@@ -11,9 +11,22 @@
 If all you want is the R package, you can install it from file R/GCAT_N.N.N.tar.gz using R CMD INSTALL.  You can also install it in RStudio, using menu Tools ==> Install Packages ==> Package Archive File.
 
 ## Virtual machine
-A Ubuntu VirtualBox VM built by Fernando Marotta is available at https://drive.google.com/open?id=1ZSlJozj8cgZ66BR_6_V3G3OVeBdEomNN.
+A Ubuntu VirtualBox VM built by Fernando Marotta is available at https://drive.google.com/open?id=1ZSlJozj8cgZ66BR_6_V3G3OVeBdEomNN. Password for the user _dolo_ is _dolito_
 
-Its system language is Spanish. Instructions on how to change language in Ubuntu are available at https://websiteforstudents.com/how-to-change-to-your-native-language-on-ubuntu-17-10/
+### Change system language
+This VM's language is Spanish. If you wish to change to another language, see instructions here: https://websiteforstudents.com/how-to-change-to-your-native-language-on-ubuntu-17-10/
+Search in system settings for _idioma_ --> select _Region e idioma_ menu. Click on _Idioma_ --> select the language you want --> Click the green _Hecho_ button --> Click _Reiniciar…_ --> Click _Cerrar la session_ --> Log in again --> A dialog pops up: _Update standard folders to current language?_ Choose _Update Names_
+
+### Install guest additions
+In the Virtual box menu, go to _Devices_ --> _Insert Guest Additions CD Image…_ --> _Run_
+(See https://help.ubuntu.com/community/VirtualBox/GuestAdditions)
+
+### Enable exchanging files with the host system by drag-and-drop
+In the Virtual box menu, go to _Devices_ --> _Drag and Drop_ --> select _Bidirectional_
+You should now be able to drag and drop files from the host to the VM and back. If it doesn’t work, reboot the VM.
+
+### Access GCAT
+Launch Firefox. Type _localhost_ into the address bar and click _Enter_
 
 ## Install your own GCAT server
 
