@@ -12,7 +12,7 @@ If all you want is the R package, you can install it from file R/GCAT_N.N.N.tar.
 
 ## Virtual machine
 A Ubuntu VirtualBox VM built by Fernando Marotta is available at https://drive.google.com/open?id=1ZSlJozj8cgZ66BR_6_V3G3OVeBdEomNN
-Its deafult language is Spanish. Instructions on how to change language in Ubuntu are available at https://websiteforstudents.com/how-to-change-to-your-native-language-on-ubuntu-17-10/
+Its system language is Spanish. Instructions on how to change language in Ubuntu are available at https://websiteforstudents.com/how-to-change-to-your-native-language-on-ubuntu-17-10/
 
 ## Install your own GCAT server
 
